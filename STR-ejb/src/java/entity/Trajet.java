@@ -162,7 +162,7 @@ public class Trajet implements Serializable {
     public void setKilométrage(Integer Kilométrage) {
         this.Kilométrage = Kilométrage;
     }
- @ManyToMany(mappedBy="Trajet")
+ @ManyToMany
  private List<Arret> listeArret = new ArrayList<Arret>();
 
     public List<Arret> getListeArret() {
@@ -173,7 +173,7 @@ public class Trajet implements Serializable {
         this.listeArret = listeArret;
     }
 
- @ManyToMany (mappedBy="Trajet")
+ @ManyToMany 
  private List<Car> listeCar = new ArrayList<Car>();
 
     public List<Car> getListeCar() {
@@ -183,17 +183,8 @@ public class Trajet implements Serializable {
     public void setListeCar(List<Car> listeCar) {
         this.listeCar = listeCar;
     }
-    @OneToMany (mappedBy= "Trajet")
-    private List<Type_Paiement> listeType_Paiement = new ArrayList<Type_Paiement>(); 
-
-    public List<Type_Paiement> getListeType_Paiement() {
-        return listeType_Paiement;
-    }
-
-    public void setListeType_Paiement(List<Type_Paiement> listeType_Paiement) {
-        this.listeType_Paiement = listeType_Paiement;
-    }
-    @ManyToMany (mappedBy="Trajet")
+    
+    @OneToMany (mappedBy="Trajet")
     private List<Tarifs> listeTarif = new ArrayList<Tarifs>();
 
     public List<Tarifs> getListeTarif() {

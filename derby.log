@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=6.1
 derby.system.home=C:\Users\5152683\Documents\NetBeansProjects\STR
 Chargeur de classe de la base de données démarré - derby.database.classpath = ''
+----------------------------------------------------------------
+Tue Mar 08 16:00:51 CET 2016 : fermeture du moteur Derby
+----------------------------------------------------------------
+Tue Mar 08 16:00:51 CET 2016:
+Fermeture de l'instance a816c00e-0153-5641-cc91-000061df9836 sur le répertoire de base de données C:\Users\5152683\Documents\NetBeansProjects\STR\STR_DB avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa 
+----------------------------------------------------------------

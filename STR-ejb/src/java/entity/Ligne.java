@@ -119,7 +119,7 @@ public class Ligne implements Serializable {
     public void setFin(Arret Fin) {
         this.Fin = Fin;
     }
-    @ManyToMany(mappedBy="Ligne")
+    @OneToMany(mappedBy="Ligne")
     private List<Tarifs> listeTarifs = new ArrayList<Tarifs>();
 
     public List<Tarifs> getListeTarifs() {
@@ -129,7 +129,7 @@ public class Ligne implements Serializable {
     public void setListeTarifs(List<Tarifs> listeTarifs) {
         this.listeTarifs = listeTarifs;
     }
-    @ManyToMany (mappedBy="Ligne")
+    @ManyToMany
     private List<Arret> listeArret = new ArrayList<Arret>();
 
     public List<Arret> getListeArret() {

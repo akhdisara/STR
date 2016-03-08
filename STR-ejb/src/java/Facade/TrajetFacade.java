@@ -36,7 +36,7 @@ public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacade
     public TrajetFacade() {
         super(Trajet.class);
     }
-      public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs)
+      public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
     {
         Trajet T = new Trajet();
         T.setDebut(Debut);
@@ -47,7 +47,6 @@ public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacade
         T.setListeArret(Arret);
         T.setListeCar(Car);
         T.setListeTarif(Tarifs);
-        T.setListeType_Paiement(Type_Paiement);
         getEntityManager().persist(T);
     }
     public Collection<Trajet>afficherListeTrajet()
@@ -73,7 +72,7 @@ public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacade
         trajet = em.merge(trajet);
         em.remove(trajet);
     }
-    public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs)
+    public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
     {
        Trajet T = new Trajet();
        T.setId(id);
@@ -85,7 +84,6 @@ public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacade
         T.setListeArret(Arret);
         T.setListeCar(Car);
         T.setListeTarif(Tarifs);
-        T.setListeType_Paiement(Type_Paiement);
         em.merge(T);
     }
     

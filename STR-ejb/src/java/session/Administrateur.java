@@ -101,9 +101,9 @@ public class Administrateur {
         return arretFacade.afficherListeArrets();
     }
     ///Trajet
-         public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs)
+         public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
      {
-        trajetFacade.creerTrajet(Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Type_Paiement,Tarifs);
+        trajetFacade.creerTrajet(Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
      }
      public Trajet RechercheTrajet(Long id)
      {
@@ -114,10 +114,10 @@ public class Administrateur {
          Trajet t = trajetFacade.RechercheTrajet(id);
         trajetFacade.supprimerTrajet(t);
      }
-     public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs)
+     public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
       {
         Trajet t = trajetFacade.RechercheTrajet(id);
-        trajetFacade.modifierTrajet(id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Type_Paiement,Tarifs);
+        trajetFacade.modifierTrajet(id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
       }
     public Collection<Trajet>afficherListeTrajet()
     {
