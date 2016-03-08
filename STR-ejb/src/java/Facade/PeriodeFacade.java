@@ -9,11 +9,14 @@ import entity.Horaire;
 import entity.Periode;
 import entity.Tarifs;
 import entity.Type_periode;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -39,7 +42,41 @@ public class PeriodeFacade extends AbstractFacade<Periode> implements PeriodeFac
         p.setDate_fin(Date_fin);
         p.setType_Periode(Type_periode);
         p.setHoraire(Horaire);
-        p.setlisteTarifs(Tarifs);
+        p.setListeTarifs(Tarifs);
         getEntityManager().persist(p);
     }  
+    public Collection<Periode>afficherListePeriode()
+    {
+        List p;
+        String txt="SELECT p FROM Periode AS p";
+                Query req=getEntityManager().createQuery(txt);
+                p = req.getResultList();
+                return p;
+        
+    }
+    
+     public Periode RecherchePeriode(Type_periode Type_periode)
+    {
+        List p = new ArrayList<Periode>();
+    String txt="SELECT p FROM Periode p WHERE p.Type_periode=:Type_periode";
+    Query req=getEntityManager().createQuery(txt);
+    req.setParameter("Type_periode",Type_periode);
+    p = req.getResultList();
+    return(Periode)p.get(0);
+    
+}
+      public void supprimerPeriode(Periode periode) {
+        periode = em.merge(periode);
+        em.remove(periode);
+    }
+      public void modifierPeriode(Periode p, Date Date_debut, Date Date_fin,Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs)
+    {
+        p.setDate_debut(Date_debut);
+        p.setDate_fin(Date_fin);
+        p.setType_Periode(Type_periode);
+        p.setHoraire(Horaire);
+        p.setListeTarifs(Tarifs);
+        em.merge(p);
+    }
+      
 }

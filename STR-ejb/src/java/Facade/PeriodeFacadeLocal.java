@@ -5,7 +5,12 @@
  */
 package Facade;
 
+import entity.Horaire;
 import entity.Periode;
+import entity.Tarifs;
+import entity.Type_periode;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +34,10 @@ public interface PeriodeFacadeLocal {
     List<Periode> findRange(int[] range);
 
     int count();
+     public void creerPeriode(Date Date_debut, Date Date_fin,Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs);
+         public Collection<Periode>afficherListePeriode();
+         public Periode RecherchePeriode(Type_periode Type_periode);
+         public void supprimerPeriode(Periode periode);
+         public void modifierPeriode(Periode p, Date Date_debut, Date Date_fin,Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs);
     
 }

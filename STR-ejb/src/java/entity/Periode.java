@@ -148,6 +148,13 @@ public class Periode implements Serializable {
     }
     @OneToMany
     private List<Tarifs> listeTarifs = new ArrayList<Tarifs>();
+    
     public List<Tarifs> getListeTarifs() {
         return listeTarifs;
-}}
+}
+
+    public void setListeTarifs(List<Tarifs> listeTarifs) {
+        this.listeTarifs = listeTarifs;
+    }
+
+}
