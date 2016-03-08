@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.Prépayé;
+import entity.Prepaye;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class PrépayéFacade extends AbstractFacade<Prépayé> implements PrépayéFacadeLocal {
+public class PrépayéFacade extends AbstractFacade<Prepaye> implements PrépayéFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class PrépayéFacade extends AbstractFacade<Prépayé> implements Prépa
     }
 
     public PrépayéFacade() {
-        super(Prépayé.class);
+        super(Prepaye.class);
     }
     
 }

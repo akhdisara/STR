@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author 5152683
  */
 @Entity
-public class Différé extends Type_Paiement implements Serializable {
+public class Sys_scolaire extends Prepaye implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +40,10 @@ public class Différé extends Type_Paiement implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Différé)) {
+        if (!(object instanceof Sys_scolaire)) {
             return false;
         }
-        Différé other = (Différé) object;
+        Sys_scolaire other = (Sys_scolaire) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -52,7 +52,7 @@ public class Différé extends Type_Paiement implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Diff\u00e9r\u00e9[ id=" + id + " ]";
+        return "entity.sys_scolaire[ id=" + id + " ]";
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_abonnement;
+import entity.Sys_abonnement;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class sys_abonnementFacade extends AbstractFacade<sys_abonnement> implements sys_abonnementFacadeLocal {
+public class sys_abonnementFacade extends AbstractFacade<Sys_abonnement> implements sys_abonnementFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class sys_abonnementFacade extends AbstractFacade<sys_abonnement> impleme
     }
 
     public sys_abonnementFacade() {
-        super(sys_abonnement.class);
+        super(Sys_abonnement.class);
     }
     
 }

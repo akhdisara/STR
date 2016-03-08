@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_PaiementUnite;
+import entity.Sys_PaiementUnite;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_PaiementUniteFacadeLocal {
 
-    void create(sys_PaiementUnite sys_PaiementUnite);
+    void create(Sys_PaiementUnite sys_PaiementUnite);
 
-    void edit(sys_PaiementUnite sys_PaiementUnite);
+    void edit(Sys_PaiementUnite sys_PaiementUnite);
 
-    void remove(sys_PaiementUnite sys_PaiementUnite);
+    void remove(Sys_PaiementUnite sys_PaiementUnite);
 
-    sys_PaiementUnite find(Object id);
+    Sys_PaiementUnite find(Object id);
 
-    List<sys_PaiementUnite> findAll();
+    List<Sys_PaiementUnite> findAll();
 
-    List<sys_PaiementUnite> findRange(int[] range);
+    List<Sys_PaiementUnite> findRange(int[] range);
 
     int count();
     

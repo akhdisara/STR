@@ -45,15 +45,16 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
         L.setListeArret(Arret);
         getEntityManager().persist(L);
     }
+      
+    @Override
     public Collection<Ligne>afficherListeLigne()
     {
-        List L;
+
         String txt="SELECT L FROM Ligne AS L";
                 Query req=getEntityManager().createQuery(txt);
-                L = req.getResultList();
-                return L;
-        
+                return req.getResultList();      
     }
+    
     public Ligne RechercheLigne(String Identifiant)
     {
         List L = new ArrayList<Ligne>();

@@ -39,7 +39,7 @@ import javax.ejb.LocalBean;
 @Stateless
 @LocalBean
 
-public class Administrateur {
+public class AdministrateurSession {
     @EJB
     private PeriodeFacadeLocal periodeFacade;
     @EJB

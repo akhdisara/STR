@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_PaiementUnite;
+import entity.Sys_PaiementUnite;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class sys_PaiementUniteFacade extends AbstractFacade<sys_PaiementUnite> implements sys_PaiementUniteFacadeLocal {
+public class sys_PaiementUniteFacade extends AbstractFacade<Sys_PaiementUnite> implements sys_PaiementUniteFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class sys_PaiementUniteFacade extends AbstractFacade<sys_PaiementUnite> i
     }
 
     public sys_PaiementUniteFacade() {
-        super(sys_PaiementUnite.class);
+        super(Sys_PaiementUnite.class);
     }
     
 }

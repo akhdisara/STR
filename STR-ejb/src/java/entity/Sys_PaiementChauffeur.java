@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author 5152683
  */
 @Entity
-public class sys_eporte_prépayé extends Prépayé implements Serializable {
+public class Sys_PaiementChauffeur extends Prepaye implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +40,10 @@ public class sys_eporte_prépayé extends Prépayé implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof sys_eporte_prépayé)) {
+        if (!(object instanceof Sys_PaiementChauffeur)) {
             return false;
         }
-        sys_eporte_prépayé other = (sys_eporte_prépayé) object;
+        Sys_PaiementChauffeur other = (Sys_PaiementChauffeur) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -52,7 +52,7 @@ public class sys_eporte_prépayé extends Prépayé implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.sys_eporte_pr\u00e9pay\u00e9[ id=" + id + " ]";
+        return "entity.sys_PaiementChauffeur[ id=" + id + " ]";
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_scolaire;
+import entity.Sys_scolaire;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_scolaireFacadeLocal {
 
-    void create(sys_scolaire sys_scolaire);
+    void create(Sys_scolaire sys_scolaire);
 
-    void edit(sys_scolaire sys_scolaire);
+    void edit(Sys_scolaire sys_scolaire);
 
-    void remove(sys_scolaire sys_scolaire);
+    void remove(Sys_scolaire sys_scolaire);
 
-    sys_scolaire find(Object id);
+    Sys_scolaire find(Object id);
 
-    List<sys_scolaire> findAll();
+    List<Sys_scolaire> findAll();
 
-    List<sys_scolaire> findRange(int[] range);
+    List<Sys_scolaire> findRange(int[] range);
 
     int count();
     

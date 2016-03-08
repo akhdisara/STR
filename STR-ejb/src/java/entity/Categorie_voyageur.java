@@ -9,7 +9,7 @@ package entity;
  *
  * @author 5152683
  */
-public enum Catégorie_voyageur {
+public enum Categorie_voyageur {
     adultes, scolaire, abonnements
     
 }

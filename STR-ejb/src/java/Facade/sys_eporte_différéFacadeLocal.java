@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_eporte_différé;
+import entity.Sys_eporte_differe;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_eporte_différéFacadeLocal {
 
-    void create(sys_eporte_différé sys_eporte_différé);
+    void create(Sys_eporte_differe sys_eporte_différé);
 
-    void edit(sys_eporte_différé sys_eporte_différé);
+    void edit(Sys_eporte_differe sys_eporte_différé);
 
-    void remove(sys_eporte_différé sys_eporte_différé);
+    void remove(Sys_eporte_differe sys_eporte_différé);
 
-    sys_eporte_différé find(Object id);
+    Sys_eporte_differe find(Object id);
 
-    List<sys_eporte_différé> findAll();
+    List<Sys_eporte_differe> findAll();
 
-    List<sys_eporte_différé> findRange(int[] range);
+    List<Sys_eporte_differe> findRange(int[] range);
 
     int count();
     

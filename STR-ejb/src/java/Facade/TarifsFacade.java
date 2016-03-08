@@ -9,7 +9,7 @@ import entity.Arret;
 import entity.Ligne;
 import entity.Periode;
 import entity.Tarifs;
-import entity.Catégorie_voyageur;
+import entity.Categorie_voyageur;
 import entity.Horaire;
 import entity.Trajet;
 import entity.Type_Paiement;
@@ -42,7 +42,7 @@ public class TarifsFacade extends AbstractFacade<Tarifs> implements TarifsFacade
     }
 
     @Override
-    public void creerTarif(Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode) {
+    public void creerTarif(Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode) {
         Tarifs tarif = new Tarifs();
         tarif.setLigne(ligne);
         tarif.setTrajet(trajet);
@@ -98,7 +98,7 @@ public class TarifsFacade extends AbstractFacade<Tarifs> implements TarifsFacade
     }
     
     @Override
-    public void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode)
+    public void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode)
     {
         tarif.setLigne(ligne);
         tarif.setTrajet(trajet);

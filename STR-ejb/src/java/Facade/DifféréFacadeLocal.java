@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.Différé;
+import entity.Differe;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface DifféréFacadeLocal {
 
-    void create(Différé différé);
+    void create(Differe différé);
 
-    void edit(Différé différé);
+    void edit(Differe différé);
 
-    void remove(Différé différé);
+    void remove(Differe différé);
 
-    Différé find(Object id);
+    Differe find(Object id);
 
-    List<Différé> findAll();
+    List<Differe> findAll();
 
-    List<Différé> findRange(int[] range);
+    List<Differe> findRange(int[] range);
 
     int count();
     

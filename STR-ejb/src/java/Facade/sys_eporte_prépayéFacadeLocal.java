@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_eporte_prépayé;
+import entity.Sys_eporte_prepaye;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_eporte_prépayéFacadeLocal {
 
-    void create(sys_eporte_prépayé sys_eporte_prépayé);
+    void create(Sys_eporte_prepaye sys_eporte_prépayé);
 
-    void edit(sys_eporte_prépayé sys_eporte_prépayé);
+    void edit(Sys_eporte_prepaye sys_eporte_prépayé);
 
-    void remove(sys_eporte_prépayé sys_eporte_prépayé);
+    void remove(Sys_eporte_prepaye sys_eporte_prépayé);
 
-    sys_eporte_prépayé find(Object id);
+    Sys_eporte_prepaye find(Object id);
 
-    List<sys_eporte_prépayé> findAll();
+    List<Sys_eporte_prepaye> findAll();
 
-    List<sys_eporte_prépayé> findRange(int[] range);
+    List<Sys_eporte_prepaye> findRange(int[] range);
 
     int count();
     

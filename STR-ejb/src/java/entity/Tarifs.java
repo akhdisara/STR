@@ -103,8 +103,8 @@ public class Tarifs implements Serializable {
      *
      * @return the value of Categorie_voyageur
      */
-    private Catégorie_voyageur Categorie_voyageur;
-    public Catégorie_voyageur getCategorie_voyageur() {
+    private Categorie_voyageur Categorie_voyageur;
+    public Categorie_voyageur getCategorie_voyageur() {
         return Categorie_voyageur;
     }
 
@@ -113,7 +113,7 @@ public class Tarifs implements Serializable {
      *
      * @param Categorie_voyageur new value of Categorie_voyageur
      */
-    public void setCategorie_voyageur(Catégorie_voyageur Categorie_voyageur) {
+    public void setCategorie_voyageur(Categorie_voyageur Categorie_voyageur) {
         this.Categorie_voyageur = Categorie_voyageur;
     }
     @ManyToOne

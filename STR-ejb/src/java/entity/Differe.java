@@ -6,21 +6,17 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 /**
  *
  * @author 5152683
  */
 @Entity
-public class Car implements Serializable {
+public class Differe extends Type_Paiement implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,10 +40,10 @@ public class Car implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Car)) {
+        if (!(object instanceof Differe)) {
             return false;
         }
-        Car other = (Car) object;
+        Differe other = (Differe) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -56,37 +52,7 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Car[ id=" + id + " ]";
+        return "entity.Diff\u00e9r\u00e9[ id=" + id + " ]";
     }
-
-    private String Identifiant;
-
-    /**
-     * Get the value of Identifiant
-     *
-     * @return the value of Identifiant
-     */
-    public String getIdentifiant() {
-        return Identifiant;
-    }
-
-    /**
-     * Set the value of Identifiant
-     *
-     * @param Identifiant new value of Identifiant
-     */
-    public void setIdentifiant(String Identifiant) {
-        this.Identifiant = Identifiant;
-    }
-  @ManyToMany
-  private List<Trajet> listeTrajet = new ArrayList<Trajet>();
-
-    public List<Trajet> getListeTrajet() {
-        return listeTrajet;
-    }
-
-    public void setListeTrajet(List<Trajet> listeTrajet) {
-        this.listeTrajet = listeTrajet;
-    }
-  
+    
 }

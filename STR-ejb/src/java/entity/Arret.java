@@ -59,7 +59,7 @@ public class Arret implements Serializable {
     public String toString() {
         return "entity.Arret[ id=" + id + " ]";
     }
-   @Column(name="DESC", nullable=false, length=512)
+   
     private String Nom;
 
     /**

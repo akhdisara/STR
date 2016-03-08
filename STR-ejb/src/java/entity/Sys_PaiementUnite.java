@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author 5152683
  */
 @Entity
-public class sys_eporte_différé extends Différé implements Serializable {
+public class Sys_PaiementUnite extends Prepaye implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,10 +40,10 @@ public class sys_eporte_différé extends Différé implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof sys_eporte_différé)) {
+        if (!(object instanceof Sys_PaiementUnite)) {
             return false;
         }
-        sys_eporte_différé other = (sys_eporte_différé) object;
+        Sys_PaiementUnite other = (Sys_PaiementUnite) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -52,7 +52,7 @@ public class sys_eporte_différé extends Différé implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.sys_eporte_diff\u00e9r\u00e9[ id=" + id + " ]";
+        return "entity.sys_PaiementUnite[ id=" + id + " ]";
     }
     
 }

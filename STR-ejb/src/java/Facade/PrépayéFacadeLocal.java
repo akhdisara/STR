@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.Prépayé;
+import entity.Prepaye;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface PrépayéFacadeLocal {
 
-    void create(Prépayé prépayé);
+    void create(Prepaye prépayé);
 
-    void edit(Prépayé prépayé);
+    void edit(Prepaye prépayé);
 
-    void remove(Prépayé prépayé);
+    void remove(Prepaye prépayé);
 
-    Prépayé find(Object id);
+    Prepaye find(Object id);
 
-    List<Prépayé> findAll();
+    List<Prepaye> findAll();
 
-    List<Prépayé> findRange(int[] range);
+    List<Prepaye> findRange(int[] range);
 
     int count();
     

@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.chauffeur;
+import entity.Chauffeur;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class chauffeurFacade extends AbstractFacade<chauffeur> implements chauffeurFacadeLocal {
+public class chauffeurFacade extends AbstractFacade<Chauffeur> implements chauffeurFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class chauffeurFacade extends AbstractFacade<chauffeur> implements chauff
     }
 
     public chauffeurFacade() {
-        super(chauffeur.class);
+        super(Chauffeur.class);
     }
     
 }

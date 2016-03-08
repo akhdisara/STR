@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_eporte_prépayé;
+import entity.Sys_eporte_prepaye;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class sys_eporte_prépayéFacade extends AbstractFacade<sys_eporte_prépayé> implements sys_eporte_prépayéFacadeLocal {
+public class sys_eporte_prépayéFacade extends AbstractFacade<Sys_eporte_prepaye> implements sys_eporte_prépayéFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class sys_eporte_prépayéFacade extends AbstractFacade<sys_eporte_prépa
     }
 
     public sys_eporte_prépayéFacade() {
-        super(sys_eporte_prépayé.class);
+        super(Sys_eporte_prepaye.class);
     }
     
 }

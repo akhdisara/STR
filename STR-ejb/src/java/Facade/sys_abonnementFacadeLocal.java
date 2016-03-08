@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_abonnement;
+import entity.Sys_abonnement;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_abonnementFacadeLocal {
 
-    void create(sys_abonnement sys_abonnement);
+    void create(Sys_abonnement sys_abonnement);
 
-    void edit(sys_abonnement sys_abonnement);
+    void edit(Sys_abonnement sys_abonnement);
 
-    void remove(sys_abonnement sys_abonnement);
+    void remove(Sys_abonnement sys_abonnement);
 
-    sys_abonnement find(Object id);
+    Sys_abonnement find(Object id);
 
-    List<sys_abonnement> findAll();
+    List<Sys_abonnement> findAll();
 
-    List<sys_abonnement> findRange(int[] range);
+    List<Sys_abonnement> findRange(int[] range);
 
     int count();
     

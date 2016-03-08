@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_scolaire;
+import entity.Sys_scolaire;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class sys_scolaireFacade extends AbstractFacade<sys_scolaire> implements sys_scolaireFacadeLocal {
+public class sys_scolaireFacade extends AbstractFacade<Sys_scolaire> implements sys_scolaireFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class sys_scolaireFacade extends AbstractFacade<sys_scolaire> implements 
     }
 
     public sys_scolaireFacade() {
-        super(sys_scolaire.class);
+        super(Sys_scolaire.class);
     }
     
 }

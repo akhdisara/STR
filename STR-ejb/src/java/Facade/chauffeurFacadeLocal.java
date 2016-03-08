@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.chauffeur;
+import entity.Chauffeur;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface chauffeurFacadeLocal {
 
-    void create(chauffeur chauffeur);
+    void create(Chauffeur chauffeur);
 
-    void edit(chauffeur chauffeur);
+    void edit(Chauffeur chauffeur);
 
-    void remove(chauffeur chauffeur);
+    void remove(Chauffeur chauffeur);
 
-    chauffeur find(Object id);
+    Chauffeur find(Object id);
 
-    List<chauffeur> findAll();
+    List<Chauffeur> findAll();
 
-    List<chauffeur> findRange(int[] range);
+    List<Chauffeur> findRange(int[] range);
 
     int count();
     

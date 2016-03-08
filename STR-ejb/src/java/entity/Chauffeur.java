@@ -6,22 +6,18 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author 5152683
  */
 @Entity
-public class Ligne implements Serializable {
+public class Chauffeur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,10 +41,10 @@ public class Ligne implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ligne)) {
+        if (!(object instanceof Chauffeur)) {
             return false;
         }
-        Ligne other = (Ligne) object;
+        Chauffeur other = (Chauffeur) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -57,9 +53,10 @@ public class Ligne implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Ligne[ id=" + id + " ]";
+        return "entity.chauffeur[ id=" + id + " ]";
     }
- 
+    
+    
     private String Identifiant;
 
     /**
@@ -79,77 +76,45 @@ public class Ligne implements Serializable {
     public void setIdentifiant(String Identifiant) {
         this.Identifiant = Identifiant;
     }
-  
-    private Arret Debut;
+
+    private String Nom;
 
     /**
-     * Get the value of Debut
+     * Get the value of Nom
      *
-     * @return the value of Debut
+     * @return the value of Nom
      */
-    public Arret getDebut() {
-        return Debut;
-    }
-
-    /**
-     * Set the value of Debut
-     *
-     * @param Debut new value of Debut
-     */
-    public void setDebut(Arret Debut) {
-        this.Debut = Debut;
-    }
-
-    private Arret Fin;
-
-    /**
-     * Get the value of Fin
-     *
-     * @return the value of Fin
-     */
-    public Arret getFin() {
-        return Fin;
+    public String getNom() {
+        return Nom;
     }
 
     /**
-     * Set the value of Fin
+     * Set the value of Nom
      *
-     * @param Fin new value of Fin
+     * @param Nom new value of Nom
      */
-    public void setFin(Arret Fin) {
-        this.Fin = Fin;
-    }
-    @OneToMany(mappedBy="Ligne")
-    private List<Tarifs> listeTarifs = new ArrayList<Tarifs>();
-
-    public List<Tarifs> getListeTarifs() {
-        return listeTarifs;
+    public void setNom(String Nom) {
+        this.Nom = Nom;
     }
 
-    public void setListeTarifs(List<Tarifs> listeTarifs) {
-        this.listeTarifs = listeTarifs;
-    }
-    @ManyToMany
-    private List<Arret> listeArret = new ArrayList<Arret>();
+    private String Prenom;
 
-    public List<Arret> getListeArret() {
-        return listeArret;
-    }
-
-    public void setListeArret(List<Arret> listeArret) {
-        this.listeArret = listeArret;
-    }
-    @OneToMany(mappedBy="Ligne")
-    private List<Horaire> listeHoraire = new ArrayList<Horaire>();
-
-    public List<Horaire> getListeHoraire() {
-        return listeHoraire;
+    /**
+     * Get the value of Prenom
+     *
+     * @return the value of Prenom
+     */
+    public String getPrenom() {
+        return Prenom;
     }
 
-    public void setListeHoraire(List<Horaire> listeHoraire) {
-        this.listeHoraire = listeHoraire;
+    /**
+     * Set the value of Prenom
+     *
+     * @param Prenom new value of Prenom
+     */
+    public void setPrenom(String Prenom) {
+        this.Prenom = Prenom;
     }
-    
-    
 
 }

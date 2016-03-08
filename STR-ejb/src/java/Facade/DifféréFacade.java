@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.Différé;
+import entity.Differe;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class DifféréFacade extends AbstractFacade<Différé> implements DifféréFacadeLocal {
+public class DifféréFacade extends AbstractFacade<Differe> implements DifféréFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class DifféréFacade extends AbstractFacade<Différé> implements Diffé
     }
 
     public DifféréFacade() {
-        super(Différé.class);
+        super(Differe.class);
     }
     
 }

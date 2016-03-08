@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.Catégorie_voyageur;
+import entity.Categorie_voyageur;
 import entity.Ligne;
 import entity.Periode;
 import entity.Tarifs;
@@ -36,12 +36,12 @@ public interface TarifsFacadeLocal {
 
     int count();
         
-    void creerTarif(Ligne ligne,Trajet trajet,Catégorie_voyageur categorie_voyageur ,float prix ,Periode periode);
+    void creerTarif(Ligne ligne,Trajet trajet,Categorie_voyageur categorie_voyageur ,float prix ,Periode periode);
     Collection<Tarifs> afficherListeTarifs();
     Collection<Tarifs> RechercheTarifsParLigne(Ligne ligne);
     Collection<Tarifs> RechercheTarifsParTrajet(Trajet trajet);
     void supprimerTarifs(Tarifs tarifs);
-    void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode);
+    void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode);
     Collection<Tarifs> RechercheTarifsParPeriode(Periode periode);
     Collection<Tarifs> RechercheTarifsParTypePaiement(Type_Paiement typePaiement);
 }

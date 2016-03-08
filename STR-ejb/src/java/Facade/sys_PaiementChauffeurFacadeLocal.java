@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_PaiementChauffeur;
+import entity.Sys_PaiementChauffeur;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface sys_PaiementChauffeurFacadeLocal {
 
-    void create(sys_PaiementChauffeur sys_PaiementChauffeur);
+    void create(Sys_PaiementChauffeur sys_PaiementChauffeur);
 
-    void edit(sys_PaiementChauffeur sys_PaiementChauffeur);
+    void edit(Sys_PaiementChauffeur sys_PaiementChauffeur);
 
-    void remove(sys_PaiementChauffeur sys_PaiementChauffeur);
+    void remove(Sys_PaiementChauffeur sys_PaiementChauffeur);
 
-    sys_PaiementChauffeur find(Object id);
+    Sys_PaiementChauffeur find(Object id);
 
-    List<sys_PaiementChauffeur> findAll();
+    List<Sys_PaiementChauffeur> findAll();
 
-    List<sys_PaiementChauffeur> findRange(int[] range);
+    List<Sys_PaiementChauffeur> findRange(int[] range);
 
     int count();
     

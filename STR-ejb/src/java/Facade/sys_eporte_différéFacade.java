@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import entity.sys_eporte_différé;
+import entity.Sys_eporte_differe;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author 5152683
  */
 @Stateless
-public class sys_eporte_différéFacade extends AbstractFacade<sys_eporte_différé> implements sys_eporte_différéFacadeLocal {
+public class sys_eporte_différéFacade extends AbstractFacade<Sys_eporte_differe> implements sys_eporte_différéFacadeLocal {
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -25,7 +25,7 @@ public class sys_eporte_différéFacade extends AbstractFacade<sys_eporte_diffé
     }
 
     public sys_eporte_différéFacade() {
-        super(sys_eporte_différé.class);
+        super(Sys_eporte_differe.class);
     }
     
 }
