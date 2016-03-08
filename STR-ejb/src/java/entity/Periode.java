@@ -6,13 +6,17 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -120,5 +124,30 @@ public class Periode implements Serializable {
     public void setType_Periode(Type_periode Type_Periode) {
         this.Type_Periode = Type_Periode;
     }
+    @ManyToOne
+   
 
-}
+    private Horaire Horaire;
+
+    /**
+     * Get the value of Horaire
+     *
+     * @return the value of Horaire
+     */
+    public Horaire getHoraire() {
+        return Horaire;
+    }
+
+    /**
+     * Set the value of Horaire
+     *
+     * @param Horaire new value of Horaire
+     */
+    public void setHoraire(Horaire Horaire) {
+        this.Horaire = Horaire;
+    }
+    @OneToMany
+    private List<Tarifs> listeTarifs = new ArrayList<Tarifs>();
+    public List<Tarifs> getListeTarifs() {
+        return listeTarifs;
+}}

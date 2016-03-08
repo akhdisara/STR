@@ -5,7 +5,14 @@
  */
 package Facade;
 
+import entity.Arret;
+import entity.Car;
 import entity.Horaire;
+import entity.Ligne;
+import entity.Periode;
+import entity.Trajet;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +36,9 @@ public interface HoraireFacadeLocal {
     List<Horaire> findRange(int[] range);
 
     int count();
-    
+    public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode);
+    public Collection<Horaire>afficherListeHoraire();
+    public Horaire RechercheHoraire(Date Heure);
+    public void supprimerHoraire(Horaire horaire);
+    public void modifierCar(Car car , String Identifiant, List<Trajet> Trajet);
 }

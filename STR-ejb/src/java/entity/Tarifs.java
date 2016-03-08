@@ -143,7 +143,7 @@ public class Tarifs implements Serializable {
     public void setLigne(Ligne Ligne) {
         this.Ligne = Ligne;
     }
-    
+    @ManyToOne
     private Periode Periode;
 
     /**
