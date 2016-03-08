@@ -37,6 +37,7 @@ public class HoraireFacade extends AbstractFacade<Horaire> implements HoraireFac
     public HoraireFacade() {
         super(Horaire.class);
     }
+      @Override
 public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode)
     {
         Horaire h = new Horaire();
@@ -46,6 +47,7 @@ public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Per
         h.setListePeriode(Periode);
         getEntityManager().persist(h);
     }  
+  @Override
  public Collection<Horaire>afficherListeHoraire()
     {
         List h;
@@ -55,7 +57,10 @@ public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Per
                 return h;
         
     }
-  public Horaire RechercheHoraire(Date Heure)
+ 
+ 
+  @Override
+  public Horaire RechercheHoraireParDate(Date Heure)
     {
         List h = new ArrayList<Horaire>();
     String txt="SELECT h FROM Horaire h WHERE h.Heure=:Heure";
@@ -65,10 +70,22 @@ public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Per
     return(Horaire)h.get(0);
     
 }
-    public void supprimerHoraire(Horaire horaire) {
+   public Horaire RechercheHoraireParID(Long id)
+    {
+        List h = new ArrayList<Horaire>();
+    String txt="SELECT h FROM Horaire h WHERE h.id=:id";
+    Query req=getEntityManager().createQuery(txt);
+    req.setParameter("id",id);
+    h = req.getResultList();
+    return(Horaire)h.get(0);
+    
+}
+    @Override  
+  public void supprimerHoraire(Horaire horaire) {
         horaire = em.merge(horaire);
         em.remove(horaire);
     }
+    @Override
  public void modifierHoraire(Horaire h, Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode)
     {
         h.setHeure(Heure);
@@ -78,8 +95,4 @@ public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Per
         em.merge(h);
     }  
 
-    @Override
-    public void modifierCar(Car car, String Identifiant, List<Trajet> Trajet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

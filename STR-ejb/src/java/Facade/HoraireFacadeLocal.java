@@ -38,7 +38,8 @@ public interface HoraireFacadeLocal {
     int count();
     public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode);
     public Collection<Horaire>afficherListeHoraire();
-    public Horaire RechercheHoraire(Date Heure);
     public void supprimerHoraire(Horaire horaire);
-    public void modifierCar(Car car , String Identifiant, List<Trajet> Trajet);
+    public void modifierHoraire(Horaire h, Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode);
+    public Horaire RechercheHoraireParDate(Date Heure);
+    public Horaire RechercheHoraireParID(Long id);
 }
