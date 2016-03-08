@@ -5,7 +5,13 @@
  */
 package Facade;
 
+import entity.Catégorie_voyageur;
+import entity.Ligne;
+import entity.Periode;
 import entity.Tarifs;
+import entity.Trajet;
+import entity.Type_Paiement;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +35,13 @@ public interface TarifsFacadeLocal {
     List<Tarifs> findRange(int[] range);
 
     int count();
-    
+        
+    void creerTarif(Ligne ligne,Trajet trajet,Catégorie_voyageur categorie_voyageur ,float prix ,Periode periode);
+    Collection<Tarifs> afficherListeTarifs();
+    Collection<Tarifs> RechercheTarifsParLigne(Ligne ligne);
+    Collection<Tarifs> RechercheTarifsParTrajet(Trajet trajet);
+    void supprimerTarifs(Tarifs tarifs);
+    void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode);
+    Collection<Tarifs> RechercheTarifsParPeriode(Periode periode);
+    Collection<Tarifs> RechercheTarifsParTypePaiement(Type_Paiement typePaiement);
 }

@@ -75,13 +75,8 @@ public class Tarifs implements Serializable {
     public void setPrix(Float Prix) {
         this.Prix = Prix;
     }
-
- 
- 
- 
- 
   
-     @ManyToOne
+    @ManyToOne
     private Trajet Trajet;
 
     /**
@@ -122,8 +117,6 @@ public class Tarifs implements Serializable {
         this.Categorie_voyageur = Categorie_voyageur;
     }
     @ManyToOne
-    
-
     private Ligne Ligne;
 
     /**
@@ -164,4 +157,20 @@ public class Tarifs implements Serializable {
         this.Periode = Periode;
     }
 
+    
+    @ManyToOne
+    private Type_Paiement TypePaiement;
+
+    public Type_Paiement getTypePaiement() {
+        return TypePaiement;
+    }
+
+    public void setTypePaiement(Type_Paiement TypePaiement) {
+        this.TypePaiement = TypePaiement;
+    }
+    
+    
+    
+    
+   
 }
