@@ -60,6 +60,14 @@ public class TarifsFacade extends AbstractFacade<Tarifs> implements TarifsFacade
     }
 
     @Override
+    public Tarifs RechercheTarifsParId(Long id) {
+        String txt = "SELECT t FROM Tarifs t WHERE t.Id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("id", id);
+        return (Tarifs)req.getResultList().get(0);
+    }
+    
+    @Override
     public Collection<Tarifs> RechercheTarifsParLigne(Ligne ligne) {
         String txt = "SELECT t FROM Tarifs t WHERE t.Ligne=:ligne";
         Query req = getEntityManager().createQuery(txt);
