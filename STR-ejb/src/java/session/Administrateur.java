@@ -15,7 +15,7 @@ import Facade.TrajetFacadeLocal;
 import entity.Arret;
 import static entity.Arret_.id;
 import entity.Car;
-import entity.Catégorie_voyageur;
+import entity.Categorie_voyageur;
 import entity.Horaire;
 import static entity.Horaire_.Heure;
 import entity.Ligne;
@@ -74,9 +74,9 @@ public class Administrateur {
         ligneFacade.supprimerLigne(l);
     }
 
-    public void modifierLigne(String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
-        Ligne l = ligneFacade.RechercheLigne(Identifiant);
-        ligneFacade.modifierLigne(Identifiant, Debut, Fin, Tarifs, Horaire, Arret);
+    public void modifierLigne(Ligne l, String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
+        Ligne L = ligneFacade.RechercheLigne(Identifiant);
+        ligneFacade.modifierLigne(l, Identifiant, Debut, Fin, Tarifs, Horaire, Arret);
     }
 
     public Collection<Ligne> afficherListeLigne() {
@@ -107,25 +107,26 @@ public class Administrateur {
     }
 
     ///Trajet
-    public void creerTrajet(Arret Debut, Arret Fin, Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage, List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs) {
-        trajetFacade.creerTrajet(Debut, Fin, Heure_depart, Heure_Arrivé, Kilométrage, Arret, Car, Type_Paiement, Tarifs);
-    }
-
-    public Trajet RechercheTrajet(Long id) {
-        return trajetFacade.RechercheTrajet(id);
-    }
-
-    public void supprimerTrajet(Long id) {
-        Trajet t = trajetFacade.RechercheTrajet(id);
+     public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
+     {
+        trajetFacade.creerTrajet(Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
+     }
+     public Trajet RechercheTrajet(Long id)
+     {
+         return trajetFacade.RechercheTrajet(id);
+     }
+     public void supprimerTrajet(Long id) 
+     {
+         Trajet t = trajetFacade.RechercheTrajet(id);
         trajetFacade.supprimerTrajet(t);
-    }
-
-    public void modifierTrajet(Long id, Arret Debut, Arret Fin, Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage, List<Arret> Arret, List<Car> Car, List<Type_Paiement> Type_Paiement, List<Tarifs> Tarifs) {
+     }
+     public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
+      {
         Trajet t = trajetFacade.RechercheTrajet(id);
-        trajetFacade.modifierTrajet(id, Debut, Fin, Heure_depart, Heure_Arrivé, Kilométrage, Arret, Car, Type_Paiement, Tarifs);
-    }
-
-    public Collection<Trajet> afficherListeTrajet() {
+        trajetFacade.modifierTrajet(T,id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
+      }
+    public Collection<Trajet>afficherListeTrajet()
+    {
         return trajetFacade.afficherListeTrajet();
     }
 
@@ -229,9 +230,10 @@ public class Administrateur {
         tarifsFacade.supprimerTarifs(tarifs);
     }
 
-    public void modifierTarifs(Long id, Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode) {
+     public void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode)
+     {
         Tarifs t = tarifsFacade.RechercheTarifsParId(id);
-        tarifsFacade.modifierTarifs(t, ligne, trajet, categorie_voyageur, prix, periode);
+        tarifsFacade.modifierTarifs(tarif, ligne, trajet, categorie_voyageur, prix, periode);
     }
 
     // Add business logic below. (Right-click in editor and choose

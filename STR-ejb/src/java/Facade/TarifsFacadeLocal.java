@@ -44,5 +44,5 @@ public interface TarifsFacadeLocal {
     void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode);
     Collection<Tarifs> RechercheTarifsParPeriode(Periode periode);
     Collection<Tarifs> RechercheTarifsParTypePaiement(Type_Paiement typePaiement);
-    Tarifs RechercheTarifsParId(Long id);
+     public Tarifs RechercheTarifsParId(Long id);
 }
