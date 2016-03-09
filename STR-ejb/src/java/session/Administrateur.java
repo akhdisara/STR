@@ -67,15 +67,19 @@ public class Administrateur {
     public Ligne RechercheLigne(String Identifiant) {
         return ligneFacade.RechercheLigne(Identifiant);
     }
+    
+    public Ligne RechercheLigneParId(Long  id) {
+        return ligneFacade.RechercheLigneParId(id);
+    }
 
-    public void supprimerLigne(String Identifiant) {
-        Ligne l = ligneFacade.RechercheLigne(Identifiant);
-
+    
+    public void supprimerLigne(Long id) {
+        Ligne l = ligneFacade.RechercheLigneParId(id);
         ligneFacade.supprimerLigne(l);
     }
 
-    public void modifierLigne(Ligne l, String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
-        Ligne L = ligneFacade.RechercheLigne(Identifiant);
+    public void modifierLigne(Long id, String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
+        Ligne l = ligneFacade.RechercheLigneParId(id);
         ligneFacade.modifierLigne(l, Identifiant, Debut, Fin, Tarifs, Horaire, Arret);
     }
 
@@ -202,7 +206,7 @@ public class Administrateur {
 
     }
 
-    public void creerTarif(Ligne ligne, Trajet trajet, Catégorie_voyageur categorie_voyageur, float prix, Periode periode) {
+    public void creerTarif(Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode) {
         tarifsFacade.creerTarif(ligne, trajet, categorie_voyageur, prix, periode);
     }
 
@@ -230,10 +234,10 @@ public class Administrateur {
         tarifsFacade.supprimerTarifs(tarifs);
     }
 
-     public void modifierTarifs(Tarifs tarif,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode)
+     public void modifierTarifs(Long id,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode)
      {
         Tarifs t = tarifsFacade.RechercheTarifsParId(id);
-        tarifsFacade.modifierTarifs(tarif, ligne, trajet, categorie_voyageur, prix, periode);
+        tarifsFacade.modifierTarifs(t, ligne, trajet, categorie_voyageur, prix, periode);
     }
 
     // Add business logic below. (Right-click in editor and choose

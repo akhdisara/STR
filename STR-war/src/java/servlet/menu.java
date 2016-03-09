@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
 import entity.Arret;
@@ -11,14 +15,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import session.AdministrateurSession;
+import session.Administrateur;
 
-
+/**
+ *
+ * @author Sara
+ */
 @WebServlet(name = "menu", urlPatterns = {"/menu"})
 public class menu extends HttpServlet {
 
     @EJB
-    private AdministrateurSession administrateurSession;
+    private Administrateur administrateurSession;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
