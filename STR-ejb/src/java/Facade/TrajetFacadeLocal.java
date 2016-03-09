@@ -37,7 +37,7 @@ public interface TrajetFacadeLocal {
     int count();
     public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs);
     public Trajet RechercheTrajet(Long id);
-     public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs);
+     public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs);
     public void supprimerTrajet(Trajet trajet);
      public Collection<Trajet>afficherListeTrajet();
 }

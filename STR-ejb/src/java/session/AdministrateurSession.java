@@ -121,10 +121,10 @@ public class AdministrateurSession {
          Trajet t = trajetFacade.RechercheTrajet(id);
         trajetFacade.supprimerTrajet(t);
      }
-     public void modifierTrajet(Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
+     public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
       {
         Trajet t = trajetFacade.RechercheTrajet(id);
-        trajetFacade.modifierTrajet(id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
+        trajetFacade.modifierTrajet(T,id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
       }
     public Collection<Trajet>afficherListeTrajet()
     {

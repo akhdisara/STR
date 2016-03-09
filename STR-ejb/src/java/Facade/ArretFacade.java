@@ -34,6 +34,7 @@ public class ArretFacade extends AbstractFacade<Arret> implements ArretFacadeLoc
     public ArretFacade() {
         super(Arret.class);
     }
+    @Override
     public void creerArret(String Nom,String Adresse, List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne)
     {
         Arret Ar = new Arret();
@@ -65,10 +66,12 @@ public class ArretFacade extends AbstractFacade<Arret> implements ArretFacadeLoc
     return(Arret)Ar.get(0);
     
 }
+    @Override
     public void supprimerArret(Arret arret) {
         arret = em.merge(arret);
         em.remove(arret);
     }
+    @Override
     public void modifierArret(Arret Ar , String Nom, String Adresse,List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne)
     {
         Ar.setNom(Nom);

@@ -56,7 +56,7 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
         Query req = getEntityManager().createQuery(txt);
         return req.getResultList();
     }
-
+@Override
     public Ligne RechercheLigne(String Identifiant) {
         List L = new ArrayList<Ligne>();
         String txt = "SELECT L FROM Ligne L WHERE L.Identifiant=:Identifiant";
@@ -66,14 +66,14 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
         return (Ligne) L.get(0);
 
     }
-
+@Override
     public Ligne RechercheLigneParId(Long id) {
         String txt = "SELECT L FROM Ligne L WHERE L.id=:id";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("id", id);
         return (Ligne) req.getResultList().get(0);
     }
-
+@Override
     public void supprimerLigne(Ligne Ligne) {
         Ligne = em.merge(Ligne);
         em.remove(Ligne);

@@ -70,6 +70,7 @@ public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Per
     return(Horaire)h.get(0);
     
 }
+  @Override
    public Horaire RechercheHoraireParID(Long id)
     {
         List h = new ArrayList<Horaire>();

@@ -32,6 +32,7 @@ public class CarFacade extends AbstractFacade<Car> implements CarFacadeLocal {
     public CarFacade() {
         super(Car.class);
     }
+    @Override
    public void creerCar(String Identifiant, List<Trajet> Trajet)
     {
         Car c = new Car();
@@ -39,6 +40,7 @@ public class CarFacade extends AbstractFacade<Car> implements CarFacadeLocal {
         c.setListeTrajet(Trajet);
         getEntityManager().persist(c);
     }
+   @Override
     public Collection<Car>afficherListeCars()
     {
         List c;
@@ -48,6 +50,7 @@ public class CarFacade extends AbstractFacade<Car> implements CarFacadeLocal {
                 return c;
         
     }
+    @Override
     public Car RechercheCar(String Identifiant)
     {
         List c = new ArrayList<Car>();
@@ -58,10 +61,12 @@ public class CarFacade extends AbstractFacade<Car> implements CarFacadeLocal {
     return(Car)c.get(0);
     
 }
+    @Override
     public void supprimerCar(Car car) {
         car = em.merge(car);
         em.remove(car);
     }
+    @Override
     public void modifierCar(Car car , String Identifiant, List<Trajet> Trajet)
     {
         car.setIdentifiant(Identifiant);

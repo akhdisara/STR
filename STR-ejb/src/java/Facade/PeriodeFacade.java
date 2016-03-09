@@ -35,6 +35,7 @@ public class PeriodeFacade extends AbstractFacade<Periode> implements PeriodeFac
     public PeriodeFacade() {
         super(Periode.class);
     }
+    @Override
     public void creerPeriode(Date Date_debut, Date Date_fin,Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs)
     {
         Periode p = new Periode();
@@ -45,6 +46,7 @@ public class PeriodeFacade extends AbstractFacade<Periode> implements PeriodeFac
         p.setListeTarifs(Tarifs);
         getEntityManager().persist(p);
     }  
+    @Override
     public Collection<Periode>afficherListePeriode()
     {
         List p;
@@ -54,7 +56,7 @@ public class PeriodeFacade extends AbstractFacade<Periode> implements PeriodeFac
                 return p;
         
     }
-    
+    @Override
      public Periode RecherchePeriode(Type_periode Type_periode)
     {
         List p = new ArrayList<Periode>();
@@ -65,10 +67,12 @@ public class PeriodeFacade extends AbstractFacade<Periode> implements PeriodeFac
     return(Periode)p.get(0);
     
 }
+     @Override
       public void supprimerPeriode(Periode periode) {
         periode = em.merge(periode);
         em.remove(periode);
     }
+      @Override
       public void modifierPeriode(Periode p, Date Date_debut, Date Date_fin,Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs)
     {
         p.setDate_debut(Date_debut);
