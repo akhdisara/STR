@@ -1,7 +1,7 @@
 <%-- 
     Document   : accueil
-    Created on : 8 mars 2016, 17:18:36
-    Author     : 5152683
+    Created on : 9 mars 2016, 00:36:55
+    Author     : Sara
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Menu</h1>
-        <a href="menu?action=gestionlignes">Gestion lignes</a>
-        <a href="menu?action=gestionarrets">Gestion arrets</a>
+        <a href="menu?action=gestionLignes">Gestion des lignes</a>
+        <a href="menu?action=gestionArrets">Gestion des arrêts</a>
     </body>
 </html>

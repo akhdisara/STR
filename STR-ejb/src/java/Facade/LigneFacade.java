@@ -23,6 +23,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLocal {
+
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -34,8 +35,9 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
     public LigneFacade() {
         super(Ligne.class);
     }
-      public void creerLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret)
-    {
+
+    @Override
+    public void creerLigne(String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
         Ligne L = new Ligne();
         L.setIdentifiant(Identifiant);
         L.setDebut(Debut);
@@ -44,34 +46,41 @@ public class LigneFacade extends AbstractFacade<Ligne> implements LigneFacadeLoc
         L.setListeHoraire(Horaire);
         L.setListeArret(Arret);
         getEntityManager().persist(L);
+        System.out.println("aertyuioknbv sdc,;");
     }
-      
-    @Override
-    public Collection<Ligne>afficherListeLigne()
-    {
 
-        String txt="SELECT L FROM Ligne AS L";
-                Query req=getEntityManager().createQuery(txt);
-                return req.getResultList();      
+    @Override
+    public Collection<Ligne> afficherListeLigne() {
+
+        String txt = "SELECT L FROM Ligne AS L";
+        Query req = getEntityManager().createQuery(txt);
+        return req.getResultList();
     }
-    
-    public Ligne RechercheLigne(String Identifiant)
-    {
+
+    public Ligne RechercheLigne(String Identifiant) {
         List L = new ArrayList<Ligne>();
-    String txt="SELECT L FROM Ligne L WHERE L.Identifiant=:Identifiant";
-    Query req=getEntityManager().createQuery(txt);
-    req.setParameter("Identifiant",Identifiant);
-    L = req.getResultList();
-    return(Ligne)L.get(0);
-    
-}
+        String txt = "SELECT L FROM Ligne L WHERE L.Identifiant=:Identifiant";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("Identifiant", Identifiant);
+        L = req.getResultList();
+        return (Ligne) L.get(0);
+
+    }
+
+    public Ligne RechercheLigneParId(Long id) {
+        String txt = "SELECT L FROM Ligne L WHERE L.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("id", id);
+        return (Ligne) req.getResultList().get(0);
+    }
+
     public void supprimerLigne(Ligne Ligne) {
         Ligne = em.merge(Ligne);
         em.remove(Ligne);
     }
-    public void modifierLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret)
-    {
-      Ligne L = new Ligne();
+
+    @Override
+    public void modifierLigne(Ligne L ,String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
         L.setIdentifiant(Identifiant);
         L.setDebut(Debut);
         L.setFin(Fin);

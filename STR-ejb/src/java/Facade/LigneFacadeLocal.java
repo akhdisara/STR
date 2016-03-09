@@ -37,5 +37,6 @@ public interface LigneFacadeLocal {
     public void creerLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret);
      public Ligne RechercheLigne(String Identifiant);
      public void supprimerLigne(Ligne Ligne);
-      public void modifierLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret);
+     Ligne RechercheLigneParId(Long id);
+      public void modifierLigne(Ligne L,String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret);
 }

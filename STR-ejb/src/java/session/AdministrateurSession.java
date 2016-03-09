@@ -56,22 +56,29 @@ public class AdministrateurSession {
     ///LIGNE
      public void creerLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret)
      {
+        System.out.println("1");
         ligneFacade.creerLigne(Identifiant,Debut,Fin,Tarifs, Horaire, Arret);
+        System.out.println("2");
      }
      public Ligne RechercheLigne(String Identifiant)
      {
          return ligneFacade.RechercheLigne(Identifiant);
      }
-     public void supprimerLigne(String Identifiant) 
+     
+     public Ligne RechercheLigneParId(Long id)
      {
-         Ligne l = ligneFacade.RechercheLigne(Identifiant);
-       
+         return ligneFacade.RechercheLigneParId(id);
+     }
+     
+     public void supprimerLigne(Long id) 
+     {
+        Ligne l = ligneFacade.RechercheLigneParId(id);      
         ligneFacade.supprimerLigne(l);
      }
-      public void modifierLigne(String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret)
+      public void modifierLigne(Long id , String Identifiant,Arret Debut,Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret)
       {
-          Ligne l = ligneFacade.RechercheLigne(Identifiant);
-        ligneFacade.modifierLigne(Identifiant,Debut,Fin,Tarifs,Horaire,Arret);
+        Ligne l = ligneFacade.RechercheLigneParId(id);
+        ligneFacade.modifierLigne(l,Identifiant,Debut,Fin,Tarifs,Horaire,Arret);
       }
        public Collection<Ligne>afficherListeLigne()
     {
