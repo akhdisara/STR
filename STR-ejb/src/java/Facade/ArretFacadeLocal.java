@@ -6,8 +6,6 @@
 package Facade;
 
 import entity.Arret;
-import entity.Horaire;
-import entity.Ligne;
 import entity.Trajet;
 import java.util.Collection;
 import java.util.List;
@@ -34,10 +32,11 @@ public interface ArretFacadeLocal {
 
     int count();
 
-    public Collection<Arret> afficherListeArrets();
+     Collection<Arret> afficherListeArrets();
 
-    public Arret RechercheArret(Long id);
-    public void creerArret(String Nom,String Adresse, List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne);
-    public void supprimerArret(Arret id);
-    public void modifierArret(Arret Ar ,String Nom, String Adresse,List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne);
+     Arret RechercheArret(Long id);
+     void creerArret(String Nom,String Adresse, List<Trajet> Trajet);
+     void supprimerArret(Arret id);
+     void modifierArret(Arret Ar ,String Nom, String Adresse,List<Trajet> Trajet);
+     Arret RechercheArretParNom(String nom);
 }

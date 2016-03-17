@@ -7,26 +7,22 @@ package session;
 
 import Facade.ArretFacadeLocal;
 import Facade.CarFacadeLocal;
-import Facade.HoraireFacadeLocal;
-import Facade.LigneFacadeLocal;
-import Facade.PeriodeFacadeLocal;
-import Facade.TarifsFacadeLocal;
+import Facade.FicheHoraireFacadeLocal;
+import Facade.LigneSTRFacadeLocal;
+import Facade.PlageHoraireFacadeLocal;
+import Facade.PositionArretLigneFacadeLocal;
+import Facade.ReductionFacadeLocal;
 import Facade.TrajetFacadeLocal;
 import entity.Arret;
-import static entity.Arret_.id;
 import entity.Car;
-import entity.Categorie_voyageur;
-import entity.Horaire;
-import static entity.Horaire_.Heure;
-import entity.Ligne;
-import static entity.Ligne_.Debut;
-import static entity.Ligne_.Identifiant;
+import entity.FicheHoraire;
+import entity.LigneSTR;
 import entity.Periode;
-import static entity.Periode_.Type_Periode;
-import entity.Tarifs;
+import entity.PlageHoraire;
+import entity.PositionArretLigne;
+import entity.Reduction;
 import entity.Trajet;
-import entity.Type_Paiement;
-import entity.Type_periode;
+import entity.TypeReduction;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +30,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.Query;
+
 
 /**
  *
@@ -43,53 +40,56 @@ import javax.persistence.Query;
 @LocalBean
 
 public class Administrateur {
+    @EJB
+    private LigneSTRFacadeLocal ligneFacade;
+    @EJB
+    private PlageHoraireFacadeLocal plageHoraireFacade;
 
     @EJB
-    private TarifsFacadeLocal tarifsFacade;
+    private FicheHoraireFacadeLocal ficheHoraireFacade;
     @EJB
-    private PeriodeFacadeLocal periodeFacade;
+    private ReductionFacadeLocal reductionFacade;
     @EJB
-    private HoraireFacadeLocal horaireFacade;
+    private PositionArretLigneFacadeLocal positionArretLigneFacade;
+
     @EJB
     private CarFacadeLocal carFacade;
     @EJB
     private TrajetFacadeLocal trajetFacade;
-    @EJB
-    private LigneFacadeLocal ligneFacade;
+ 
     @EJB
     private ArretFacadeLocal arretFacade;
 
     ///LIGNE
-    public void creerLigne(String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
-        ligneFacade.creerLigne(Identifiant, Debut, Fin, Tarifs, Horaire, Arret);
+    public void creerLigne(String Identifiant) {
+        ligneFacade.creerLigne(Identifiant);
     }
 
-    public Ligne RechercheLigne(String Identifiant) {
+    public LigneSTR RechercheLigne(String Identifiant) {
         return ligneFacade.RechercheLigne(Identifiant);
     }
-    
-    public Ligne RechercheLigneParId(Long  id) {
+
+    public LigneSTR RechercheLigneParId(Long id) {
         return ligneFacade.RechercheLigneParId(id);
     }
 
-    
     public void supprimerLigne(Long id) {
-        Ligne l = ligneFacade.RechercheLigneParId(id);
+        LigneSTR l = ligneFacade.RechercheLigneParId(id);
         ligneFacade.supprimerLigne(l);
     }
 
-    public void modifierLigne(Long id, String Identifiant, Arret Debut, Arret Fin, List<Tarifs> Tarifs, List<Horaire> Horaire, List<Arret> Arret) {
-        Ligne l = ligneFacade.RechercheLigneParId(id);
-        ligneFacade.modifierLigne(l, Identifiant, Debut, Fin, Tarifs, Horaire, Arret);
+    public void modifierLigne(Long id, String Identifiant, Arret Debut, Arret Fin) {
+        LigneSTR l = ligneFacade.RechercheLigneParId(id);
+        ligneFacade.modifierLigne(l, Identifiant, Debut, Fin);
     }
 
-    public Collection<Ligne> afficherListeLigne() {
+    public Collection<LigneSTR> afficherListeLigne() {
         return ligneFacade.afficherListeLigne();
     }
 ///Arret
 
-    public void creerArret(String Nom, String Adresse, List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne) {
-        arretFacade.creerArret(Nom, Adresse, Trajet, Horaire, Ligne);
+    public void creerArret(String Nom, String Adresse, List<Trajet> Trajet) {
+        arretFacade.creerArret(Nom, Adresse, Trajet);
     }
 
     public Arret RechercheArret(Long id) {
@@ -101,9 +101,9 @@ public class Administrateur {
         arretFacade.supprimerArret(a);
     }
 
-    public void modifierArret(Long id, String Nom, String Adresse, List<Trajet> Trajet, List<Horaire> Horaire, List<Ligne> Ligne) {
+    public void modifierArret(Long id, String Nom, String Adresse, List<Trajet> Trajet) {
         Arret a = arretFacade.RechercheArret(id);
-        arretFacade.modifierArret(a, Nom, Adresse, Trajet, Horaire, Ligne);
+        arretFacade.modifierArret(a, Nom, Adresse, Trajet);
     }
 
     public Collection<Arret> afficherListeArrets() {
@@ -111,26 +111,25 @@ public class Administrateur {
     }
 
     ///Trajet
-     public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
-     {
-        trajetFacade.creerTrajet(Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
-     }
-     public Trajet RechercheTrajet(Long id)
-     {
-         return trajetFacade.RechercheTrajet(id);
-     }
-     public void supprimerTrajet(Long id) 
-     {
-         Trajet t = trajetFacade.RechercheTrajet(id);
-        trajetFacade.supprimerTrajet(t);
-     }
-     public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
-      {
+    public void creerTrajet(LigneSTR ligne, Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car) {
+        trajetFacade.creerTrajet(ligne, Debut, Fin, tarifBase, TarifMensuel, tarifHebdomadaire, Car);
+    }
+
+    public Trajet RechercheTrajet(Long id) {
+        return trajetFacade.RechercheTrajet(id);
+    }
+
+    public void supprimerTrajet(Long id) {
         Trajet t = trajetFacade.RechercheTrajet(id);
-        trajetFacade.modifierTrajet(T,id,Debut,Fin,Heure_depart,Heure_Arrivé,Kilométrage,Arret,Car,Tarifs);
-      }
-    public Collection<Trajet>afficherListeTrajet()
-    {
+        trajetFacade.supprimerTrajet(t);
+    }
+
+    public void modifierTrajet(long id, LigneSTR ligne, Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car) {
+        Trajet t = trajetFacade.RechercheTrajet(id);
+        trajetFacade.modifierTrajet(t, ligne, Debut, Fin, tarifBase, TarifMensuel, tarifHebdomadaire, null);
+    }
+
+    public Collection<Trajet> afficherListeTrajet() {
         return trajetFacade.afficherListeTrajet();
     }
 
@@ -157,89 +156,83 @@ public class Administrateur {
         return carFacade.afficherListeCars();
 
     }
-    ///Horaire
 
-    public void creerHoraire(Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode) {
-        horaireFacade.creerHoraire(Heure, Ligne, Arret, Periode);
+
+    public void ajouterPosition(LigneSTR l, Arret a, int position) {
+        positionArretLigneFacade.ajouterPositionArretLigne(l, a, position);
     }
 
-    public Horaire RechercheHoraireParDate(Date Heure) {
-        return horaireFacade.RechercheHoraireParDate(Heure);
+    public double TarifBaseParArrets(LigneSTR l, Arret debut, Arret arrivee) {
+        return trajetFacade.TarifBaseParArrets(l, debut, arrivee);
     }
 
-    public void supprimerHoraire(Date heure) {
-        Horaire h = horaireFacade.RechercheHoraireParDate(heure);
-        horaireFacade.supprimerHoraire(h);
+    public double TarifMensuelParArrets(LigneSTR l, Arret debut, Arret arrivee) {
+        return trajetFacade.TarifMensuelParArrets(l, debut, arrivee);
     }
 
-    public void modifierHoraire(Long id, Date Heure, Ligne Ligne, Arret Arret, List<Periode> Periode) {
-        Horaire h = horaireFacade.RechercheHoraireParID(id);
-        horaireFacade.modifierHoraire(h, Heure, Ligne, Arret, Periode);
+    public double TarifHebdomadaireParArrets(LigneSTR l, Arret debut, Arret arrivee) {
+        return trajetFacade.TarifHebdomadaireParArrets(l, debut, arrivee);
     }
 
-    public Collection<Horaire> afficherListeHoraire() {
-        return horaireFacade.afficherListeHoraire();
-
-    }
-    ///Periode
-
-    public void creerPeriode(Date Date_debut, Date Date_fin, Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs) {
-        periodeFacade.creerPeriode(Date_debut, Date_fin, Type_periode, Horaire, Tarifs);
+    public void creerReduction(TypeReduction type, int taux) {
+        reductionFacade.creerReduction(type, taux);
     }
 
-    public Periode RecherchePeriode(Type_periode Type_periode) {
-        return periodeFacade.RecherchePeriode(Type_periode);
+    public Collection<Reduction> afficherListeReductions() {
+        return reductionFacade.afficherListeReductions();
     }
 
-    public void supprimerPeriode(Type_periode Type_periode) {
-        Periode p = periodeFacade.RecherchePeriode(Type_periode);
-        periodeFacade.supprimerPeriode(p);
+    public Reduction RechercheReduction(long id) {
+        return reductionFacade.RechercheReduction(id);
     }
 
-    public void modifierPeriode(Date Date_debut, Date Date_fin, Type_periode Type_periode, Horaire Horaire, List<Tarifs> Tarifs) {
-        Periode pp = periodeFacade.RecherchePeriode(Type_periode);
-        periodeFacade.modifierPeriode(pp, Date_debut, Date_fin, Type_periode, Horaire, Tarifs);
+    public Reduction RechercheReductionParType(TypeReduction typeReduction) {
+        return reductionFacade.RechercheReductionParType(typeReduction);
     }
 
-    public Collection<Periode> afficherListePeriode() {
-        return periodeFacade.afficherListePeriode();
-
+    public void supprimerReduction(long id) {
+        Reduction r = reductionFacade.RechercheReduction(id);
+        reductionFacade.supprimerReduction(r);
     }
 
-    public void creerTarif(Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode) {
-        tarifsFacade.creerTarif(ligne, trajet, categorie_voyageur, prix, periode);
+    public void modifierReduction(long id, TypeReduction type, int taux) {
+        Reduction r = reductionFacade.RechercheReduction(id);
+        reductionFacade.modifierReduction(r, type, taux);
     }
 
-    public Collection<Tarifs> afficherListeTarifs() {
-        return tarifsFacade.afficherListeTarifs();
+    public Collection<PositionArretLigne> RecherchePositionParLigne(LigneSTR ligne) {
+        return positionArretLigneFacade.RecherchePositionParLigne(ligne);
     }
 
-    public Collection<Tarifs> RechercheTarifsParLigne(Ligne ligne) {
-        return tarifsFacade.RechercheTarifsParLigne(ligne);
+    public List<Trajet> RechercheTrajetParLigne(LigneSTR ligne) {
+        return trajetFacade.RechercheTrajetParLigne(ligne);
     }
 
-    public Collection<Tarifs> RechercheTarifsParTrajet(Trajet trajet) {
-        return tarifsFacade.RechercheTarifsParTrajet(trajet);
+    public Collection<FicheHoraire> RechercheFicheHoraireParLigne(LigneSTR ligne) {
+        return ficheHoraireFacade.RechercheFicheHoraireParLigne(ligne);
     }
-
-    public Collection<Tarifs> RechercheTarifsParTypePaiement(Type_Paiement typePaiement) {
-        return tarifsFacade.RechercheTarifsParTypePaiement(typePaiement);
+    
+    public Arret RechercheArretParNom(String nom) {
+        return arretFacade.RechercheArretParNom(nom);
     }
-
-    public Collection<Tarifs> RechercheTarifsParPeriode(Periode periode) {
-        return tarifsFacade.RechercheTarifsParPeriode(periode);
+    
+    public Long creerFicheHoraire(LigneSTR ligne,Periode periode) {
+        return ficheHoraireFacade.creerFicheHoraire(ligne,periode);
     }
-
-    public void supprimerTarifs(Tarifs tarifs) {
-        tarifsFacade.supprimerTarifs(tarifs);
+    
+    public void creerPlageHoraire(FicheHoraire ficheHoraire, Arret arret, Date horaire) {
+        plageHoraireFacade.creerPlageHoraire(ficheHoraire, arret, horaire);
     }
-
-     public void modifierTarifs(Long id,Ligne ligne, Trajet trajet, Categorie_voyageur categorie_voyageur, float prix, Periode periode)
-     {
-        Tarifs t = tarifsFacade.RechercheTarifsParId(id);
-        tarifsFacade.modifierTarifs(t, ligne, trajet, categorie_voyageur, prix, periode);
+    
+    public FicheHoraire RechercheFicheHoraireParId(Long id) {
+        return ficheHoraireFacade.RechercheFicheHoraireParId(id);
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    
+     public Collection<PlageHoraire> RecherchePlagesHorairesParFicheHoraire(FicheHoraire ficheHoraire) {
+       return plageHoraireFacade.RecherchePlagesHorairesParFicheHoraire(ficheHoraire);
+    }
+     
+     public Collection<FicheHoraire> RechercheFicheHoraireParLignePeriode(LigneSTR ligne , Periode periode) {
+        return  ficheHoraireFacade.RechercheFicheHoraireParLignePeriode(ligne, periode);
+    }
 }

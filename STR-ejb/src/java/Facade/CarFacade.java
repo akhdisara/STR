@@ -54,7 +54,7 @@ public class CarFacade extends AbstractFacade<Car> implements CarFacadeLocal {
     public Car RechercheCar(String Identifiant)
     {
         List c = new ArrayList<Car>();
-    String txt="SELECT c FROM Car c WHERE r.Identifiant=:Identifiant";
+    String txt="SELECT c FROM Car c WHERE c.Identifiant=:Identifiant";
     Query req=getEntityManager().createQuery(txt);
     req.setParameter("Identifiant",Identifiant);
     c = req.getResultList();

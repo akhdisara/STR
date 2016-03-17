@@ -4,3 +4,6 @@
 /STR-ejb/build/
 /STR-ejb/dist/
 /STR-war/build/
+/build/
+/dist/
+/STR-war/dist/

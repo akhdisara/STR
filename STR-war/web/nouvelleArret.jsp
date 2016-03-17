@@ -9,17 +9,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@ include file="navigation.jsp" %>
+        <title>Arret</title>
     
 </head>
 <body>
-    <h1>Nouvelle Arrêts</h1>
+    <h1 id="h1">Nouvelle Arrêts</h1>
+    
     <form method="get" action="menu">
+        <div class='text'>
         Nom <br> <input type="text" name="nom" /><br>
-        Adresse <br> <input type="text" name="adresse" /><br>
+        Adresse <br> <input type="text" name="adresse" /><br><br>
+        </div>
+        <div id="btn_ModSup">
         <input type="hidden" name="action" value="ajouterArret" />
-        <input type="submit" value="Ajouter">
-        <input type="reset" value="Vider">
+        <input class="btn_ModSup" type="submit" value="Ajouter">
+        <input class="btn_ModSup" type="reset" value="Vider">
+        </div>
     </form>
+    
 </body>
 </html>

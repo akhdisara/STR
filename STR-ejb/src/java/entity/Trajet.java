@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -23,6 +24,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Trajet implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,7 +62,7 @@ public class Trajet implements Serializable {
     public String toString() {
         return "entity.Trajet[ id=" + id + " ]";
     }
- 
+
     private Arret Debut;
 
     /**
@@ -80,7 +82,7 @@ public class Trajet implements Serializable {
     public void setDebut(Arret Debut) {
         this.Debut = Debut;
     }
-   
+
     private Arret Fin;
 
     /**
@@ -101,80 +103,9 @@ public class Trajet implements Serializable {
         this.Fin = Fin;
     }
 
- @Temporal(javax.persistence.TemporalType.DATE)
-    private Date Heure_depart;
-
-    /**
-     * Get the value of Heure_depart
-     *
-     * @return the value of Heure_depart
-     */
-    public Date getHeure_depart() {
-        return Heure_depart;
-    }
-
-    /**
-     * Set the value of Heure_depart
-     *
-     * @param Heure_depart new value of Heure_depart
-     */
-    public void setHeure_depart(Date Heure_depart) {
-        this.Heure_depart = Heure_depart;
-    }
-
- @Temporal(javax.persistence.TemporalType.DATE)
-    private Date Heure_Arrivé;
-
-    /**
-     * Get the value of Heure_Arrivé
-     *
-     * @return the value of Heure_Arrivé
-     */
-    public Date getHeure_Arrivé() {
-        return Heure_Arrivé;
-    }
-
-    /**
-     * Set the value of Heure_Arrivé
-     *
-     * @param Heure_Arrivé new value of Heure_Arrivé
-     */
-    public void setHeure_Arrivé(Date Heure_Arrivé) {
-        this.Heure_Arrivé = Heure_Arrivé;
-    }
-   
-    private Integer Kilométrage;
-
-    /**
-     * Get the value of Kilométrage
-     *
-     * @return the value of Kilométrage
-     */
-    public Integer getKilométrage() {
-        return Kilométrage;
-    }
-
-    /**
-     * Set the value of Kilométrage
-     *
-     * @param Kilométrage new value of Kilométrage
-     */
-    public void setKilométrage(Integer Kilométrage) {
-        this.Kilométrage = Kilométrage;
-    }
- @ManyToMany
- private List<Arret> listeArret = new ArrayList<Arret>();
-
-    public List<Arret> getListeArret() {
-        return listeArret;
-    }
-
-    public void setListeArret(List<Arret> listeArret) {
-        this.listeArret = listeArret;
-    }
-
- @ManyToMany 
- private List<Car> listeCar = new ArrayList<Car>();
+    
+    @ManyToMany
+    private List<Car> listeCar = new ArrayList<Car>();
 
     public List<Car> getListeCar() {
         return listeCar;
@@ -183,20 +114,46 @@ public class Trajet implements Serializable {
     public void setListeCar(List<Car> listeCar) {
         this.listeCar = listeCar;
     }
+
+    private Double tarifBase;
+
+    public Double getTarifBase() {
+        return tarifBase;
+    }
+
+    public void setTarifBase(Double tarifBase) {
+        this.tarifBase = tarifBase;
+    }
+
+    private Double tarifMensuel;
+
+    public Double getTarifMensuel() {
+        return tarifMensuel;
+    }
+
+    public void setTarifMensuel(Double tarifMensuel) {
+        this.tarifMensuel = tarifMensuel;
+    }
     
-    @OneToMany (mappedBy="Trajet")
-    private List<Tarifs> listeTarif = new ArrayList<Tarifs>();
+    private Double tarifHebdomadaire;
 
-    public List<Tarifs> getListeTarif() {
-        return listeTarif;
+    public void setTarifHebdomadaire(Double tarifHebdomadaire) {
+        this.tarifHebdomadaire = tarifHebdomadaire;
     }
 
-    public void setListeTarif(List<Tarifs> listeTarif) {
-        this.listeTarif = listeTarif;
-    }
-
-   
+    public Double getTarifHebdomadaire() {
+        return tarifHebdomadaire;
     }
     
-   
+    @ManyToOne
+    private LigneSTR ligne;
 
+    public LigneSTR getLigne() {
+        return ligne;
+    }
+
+    public void setLigne(LigneSTR ligne) {
+        this.ligne = ligne;
+    }
+   
+}

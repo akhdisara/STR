@@ -9,11 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Accueil</title>
     </head>
     <body>
-        <h1>Menu</h1>
-        <a href="menu?action=gestionLignes">Gestion des lignes</a>
-        <a href="menu?action=gestionArrets">Gestion des arrêts</a>
+      <%@ include file="navigation.jsp" %>
     </body>
 </html>

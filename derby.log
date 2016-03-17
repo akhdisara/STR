@@ -1,21 +1,20 @@
-Tue Mar 08 23:36:28 CET 2016 : Apache Derby Serveur réseau - 10.8.3.2 - (1557835) démarré et prêt à accepter les connexions sur le port 1527
+Wed Mar 16 11:23:23 CET 2016 : Apache Derby Network Server - 10.10.1.3 - (1557168) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Tue Mar 08 23:38:47 CET 2016:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835) : instance a816c00e-0153-585f-c878-0000445b788f 
-dans le répertoire de base de données C:\Users\Sara\Downloads\STR\STR\DB_SISTR  avec le chargeur de classe sun.misc.Launcher$AppClassLoader@5e875dee
-
+Wed Mar 16 11:23:25 CET 2016:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.10.1.3 - (1557168) : instance a816c00e-0153-7ef3-8beb-ffff81157911 
+dans le répertoire de base de données C:\Users\3099709.LYON3-AD1\Documents\NetBeansProjects\STR\DB_STR avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa
+Chargé de file:/C:/Program%20Files/Java/jdk1.8.0_05/db/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_79-b15
-user.dir=C:\Program Files\Java\jdk1.7.0_79\db
+java.runtime.version=1.8.0_05-b13
+user.dir=C:\Program Files\Java\jdk1.8.0_05\db
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
-derby.system.home=C:\Users\Sara\Downloads\STR\STR
-Chargeur de classe de la base de données démarré - derby.database.classpath=''
+derby.system.home=C:\Users\3099709.LYON3-AD1\Documents\NetBeansProjects\STR
+Chargeur de classe de la base de données démarré - derby.database.classpath = ''
 ----------------------------------------------------------------
-Tue Mar 08 23:38:56 CET 2016:
-Fermeture de l'instance a816c00e-0153-585f-c878-0000445b788f sur le répertoire de base de données C:\Users\Sara\Downloads\STR\STR\DB_SISTR avec le chargeur de classe sun.misc.Launcher$AppClassLoader@5e875dee
-Tue Mar 08 23:38:56 CET 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = DB_SISTR), (DRDAID = {2}), Arrêt de la base de données 'DB_SISTR'.
+Wed Mar 16 11:40:07 CET 2016 : fermeture du moteur Derby
 ----------------------------------------------------------------
-Tue Mar 08 23:39:22 CET 2016 : fermeture du moteur Derby
+Wed Mar 16 11:40:07 CET 2016:
+Fermeture de l'instance a816c00e-0153-7ef3-8beb-ffff81157911 sur le répertoire de base de données C:\Users\3099709.LYON3-AD1\Documents\NetBeansProjects\STR\DB_STR avec le chargeur de classe sun.misc.Launcher$AppClassLoader@1d44bcfa 
 ----------------------------------------------------------------

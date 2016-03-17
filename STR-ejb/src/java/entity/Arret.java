@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -110,27 +109,30 @@ private List<Trajet> listeTrajet = new ArrayList<Trajet>();
         this.listeTrajet = listeTrajet;
     }
 
-@OneToMany (mappedBy="Arret")
-private List<Horaire> listeHoraire = new ArrayList<Horaire>();
 
-    public List<Horaire> getListeHoraire() {
-        return listeHoraire;
+    @OneToMany (mappedBy="arret")
+    List<PositionArretLigne> positions = new ArrayList<PositionArretLigne>();
+
+    public List<PositionArretLigne> getPositions() {
+        return positions;
     }
 
-    public void setListeHoraire(List<Horaire> listeHoraire) {
-        this.listeHoraire = listeHoraire;
+    public void setPositions(List<PositionArretLigne> positions) {
+        this.positions = positions;
+    }
+    
+    @OneToMany (mappedBy="arret")
+    List<PlageHoraire> plagesHoraires = new ArrayList<PlageHoraire>();
+
+    public void setPlagesHoraires(List<PlageHoraire> plagesHoraires) {
+        this.plagesHoraires = plagesHoraires;
     }
 
-    @ManyToMany
-    private List<Ligne> listeLigne = new ArrayList<Ligne>();
-
-    public List<Ligne> getListeLigne() {
-        return listeLigne;
+    public List<PlageHoraire> getPlagesHoraires() {
+        return plagesHoraires;
     }
-
-    public void setListeLigne(List<Ligne> listeLigne) {
-        this.listeLigne = listeLigne;
-    }
+    
+    
     
     
 }

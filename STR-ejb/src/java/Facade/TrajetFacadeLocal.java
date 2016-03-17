@@ -7,9 +7,9 @@ package Facade;
 
 import entity.Arret;
 import entity.Car;
-import entity.Tarifs;
+import entity.FicheHoraire;
+import entity.LigneSTR;
 import entity.Trajet;
-import entity.Type_Paiement;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -35,9 +35,24 @@ public interface TrajetFacadeLocal {
     List<Trajet> findRange(int[] range);
 
     int count();
-    public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs);
-    public Trajet RechercheTrajet(Long id);
-     public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs);
-    public void supprimerTrajet(Trajet trajet);
-     public Collection<Trajet>afficherListeTrajet();
+
+    void creerTrajet(LigneSTR ligne,Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car);
+
+    Trajet RechercheTrajet(Long id);
+
+    void modifierTrajet(Trajet T, LigneSTR ligne,Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car);
+
+    void supprimerTrajet(Trajet trajet);
+
+    Collection<Trajet> afficherListeTrajet();
+    
+    double TarifBaseParArrets(LigneSTR l , Arret debut , Arret arrivee);
+    
+    double TarifMensuelParArrets(LigneSTR ligne, Arret debut, Arret arrivee);
+    
+    double TarifHebdomadaireParArrets(LigneSTR ligne, Arret debut, Arret arrivee);
+    
+    List<Trajet> RechercheTrajetParLigne(LigneSTR ligne);
+    
+
 }

@@ -7,12 +7,10 @@ package Facade;
 
 import entity.Arret;
 import entity.Car;
-import entity.Tarifs;
+import entity.LigneSTR;
 import entity.Trajet;
-import entity.Type_Paiement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,6 +23,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacadeLocal {
+
     @PersistenceContext(unitName = "STR-ejbPU")
     private EntityManager em;
 
@@ -36,59 +35,94 @@ public class TrajetFacade extends AbstractFacade<Trajet> implements TrajetFacade
     public TrajetFacade() {
         super(Trajet.class);
     }
+
     @Override
-      public void creerTrajet(Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
-    {
+    public void creerTrajet(LigneSTR ligne, Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car) {
         Trajet T = new Trajet();
+        T.setLigne(ligne);
         T.setDebut(Debut);
         T.setFin(Fin);
-        T.setHeure_depart(Heure_depart);
-        T.setHeure_Arrivé(Heure_Arrivé);
-        T.setKilométrage(Kilométrage);
-        T.setListeArret(Arret);
+        T.setTarifBase(tarifBase);
+        T.setTarifMensuel(TarifMensuel);
+        T.setTarifHebdomadaire(tarifHebdomadaire);
         T.setListeCar(Car);
-        T.setListeTarif(Tarifs);
         getEntityManager().persist(T);
     }
-      @Override
-    public Collection<Trajet>afficherListeTrajet()
-    {
-        List T;
-        String txt="SELECT T FROM Trajet AS T";
-                Query req=getEntityManager().createQuery(txt);
-                T = req.getResultList();
-                return T;
-        
-    }
+
     @Override
-    public Trajet RechercheTrajet(Long id)
-    {
+    public Collection<Trajet> afficherListeTrajet() {
+        List T;
+        String txt = "SELECT T FROM Trajet AS T";
+        Query req = getEntityManager().createQuery(txt);
+        T = req.getResultList();
+        return T;
+
+    }
+
+    @Override
+    public Trajet RechercheTrajet(Long id) {
         List T = new ArrayList<Trajet>();
-    String txt="SELECT T FROM Trajet T WHERE T.id=:id";
-    Query req=getEntityManager().createQuery(txt);
-    req.setParameter("id",id);
-    T = req.getResultList();
-    return(Trajet)T.get(0);
+        String txt = "SELECT T FROM Trajet T WHERE T.id=:id";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("id", id);
+        T = req.getResultList();
+        return (Trajet) T.get(0);
+
+    }
     
-}
+    @Override
+    public List<Trajet> RechercheTrajetParLigne(LigneSTR ligne) {
+        List T = new ArrayList<Trajet>();
+        String txt = "SELECT T FROM Trajet T WHERE T.ligne=:ligne";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("ligne", ligne);
+        return  req.getResultList();
+    }
+
     @Override
     public void supprimerTrajet(Trajet trajet) {
         trajet = em.merge(trajet);
         em.remove(trajet);
     }
+
     @Override
-    public void modifierTrajet(Trajet T, Long id, Arret Debut,Arret Fin,Date Heure_depart, Date Heure_Arrivé, Integer Kilométrage,List<Arret> Arret, List<Car> Car, List<Tarifs> Tarifs)
-    {
-        T.setId(id);
+    public void modifierTrajet(Trajet T, LigneSTR ligne, Arret Debut, Arret Fin, double tarifBase, double TarifMensuel, double tarifHebdomadaire, List<Car> Car) {
         T.setDebut(Debut);
         T.setFin(Fin);
-        T.setHeure_depart(Heure_depart);
-        T.setHeure_Arrivé(Heure_Arrivé);
-        T.setKilométrage(Kilométrage);
-        T.setListeArret(Arret);
         T.setListeCar(Car);
-        T.setListeTarif(Tarifs);
         em.merge(T);
     }
+
+    @Override
+    public double TarifBaseParArrets(LigneSTR ligne, Arret debut, Arret arrivee) {
+        String txt = "SELECT T FROM Trajet T WHERE T.Debut=:Debut and T.Fin=:Fin and T.ligne=:ligne";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("Debut", debut);        
+        req.setParameter("Fin", arrivee);        
+        req.setParameter("ligne", ligne);   
+        Trajet t = (Trajet)req.getResultList().get(0);
+        return t.getTarifBase() ;
+    }
     
+    @Override
+    public double TarifMensuelParArrets(LigneSTR ligne, Arret debut, Arret arrivee) {
+        String txt = "SELECT T FROM Trajet T WHERE T.Debut=:Debut and T.Fin=:Fin and T.ligne=:ligne";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("Debut", debut);        
+        req.setParameter("Fin", arrivee);        
+        req.setParameter("ligne", ligne);   
+        Trajet t = (Trajet)req.getResultList().get(0);
+        return t.getTarifMensuel();
+    }
+    
+    @Override
+    public double TarifHebdomadaireParArrets(LigneSTR ligne, Arret debut, Arret arrivee) {
+        String txt = "SELECT T FROM Trajet T WHERE T.Debut=:Debut and T.Fin=:Fin and T.ligne=:ligne";
+        Query req = getEntityManager().createQuery(txt);
+        req.setParameter("Debut", debut);        
+        req.setParameter("Fin", arrivee);        
+        req.setParameter("ligne", ligne);   
+        Trajet t = (Trajet)req.getResultList().get(0);
+        return t.getTarifHebdomadaire();
+    }
 }
