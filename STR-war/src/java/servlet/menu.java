@@ -302,6 +302,7 @@ public class menu extends HttpServlet {
                 double tarifM = Double.parseDouble(tarifMTxt);
                 double tarifH = Double.parseDouble(tarifHTxt);
                 administrateurSession.creerTrajet(ligne, listePos.get(i).getArret(), listePos.get(j).getArret(), tarif, tarifM, tarifH, null);
+                administrateurSession.creerTrajet(ligne, listePos.get(j).getArret(), listePos.get(i).getArret(), tarif, tarifM, tarifH, null);
             }
         }
         request.setAttribute("collectionLignes", administrateurSession.afficherListeLigne());
