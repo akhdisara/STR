@@ -67,7 +67,7 @@ public class PlageHoraireFacade extends AbstractFacade<PlageHoraire> implements 
     
     @Override
     public Collection<PlageHoraire> RecherchePlagesHorairesParHoraire(Date horaire) {
-        String txt = "SELECT p FROM PlageHoraire p WHERE p.horaire=:horaire";
+        String txt = "SELECT p FROM PlageHoraire p WHERE p.horaire=:horaire order by p.horaire asc";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("horaire", horaire);
         return req.getResultList();

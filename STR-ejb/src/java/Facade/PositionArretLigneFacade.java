@@ -44,7 +44,7 @@ public class PositionArretLigneFacade extends AbstractFacade<PositionArretLigne>
     
     @Override
     public Collection<PositionArretLigne> RecherchePositionParLigne(LigneSTR ligne) {
-        String txt = "SELECT p FROM PositionArretLigne p WHERE p.ligne=:ligne";
+        String txt = "SELECT p FROM PositionArretLigne p WHERE p.ligne=:ligne order by p.position asc";
         Query req = getEntityManager().createQuery(txt);
         req.setParameter("ligne", ligne);
         return req.getResultList();

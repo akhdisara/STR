@@ -10,5 +10,5 @@ package entity;
  * @author Sara
  */
 public enum TypeReduction {
-    Scolaire,PorteMonnaie,
+    Scolaire,PorteMonnaie
 }
